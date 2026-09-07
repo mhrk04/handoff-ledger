@@ -1,0 +1,21 @@
+package z:handoff-ledger@0.1.0;
+
+world handoff-ledger {
+    import host:tenant/tenant-context@1.0.0;
+    import host:interfaces/logging@2.1.0;
+    import host:interfaces/kv-store@2.1.0;
+    export contracts;
+}
+
+interface contracts {
+    record generic-input {
+        input: option<list<u8>>,
+        user-profile: option<list<u8>>,
+        context: option<list<u8>>,
+    }
+
+    create-handoff: func(req: generic-input) -> result<list<u8>, string>;
+    redeem-handoff: func(req: generic-input) -> result<list<u8>, string>;
+    revoke-handoff: func(req: generic-input) -> result<list<u8>, string>;
+    get-audit: func(req: generic-input) -> result<list<u8>, string>;
+}
