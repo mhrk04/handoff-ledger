@@ -52,23 +52,50 @@ async function state(): Promise<unknown> {
   if (mode === "mock") {
     return {
       mode,
+      runtime: "local deterministic mock",
       tenantDid: maskDid(mockTenantDid),
       agentDid: maskDid(mockAgentDid),
       allowedFields: SAFE_FIELDS,
       purpose: "fraud_review",
       piiStatus: "sealed in case-data map; never sent to Fraud Agent",
       handoffId: activeHandoffId || null,
+      mechanics: {
+        contract: "local policy engine",
+        maps: ["in-memory case-data", "in-memory handoffs", "in-memory audit"],
+        authorization: "local test policy",
+        calls: { create: "tenant", redeem: "agent", revoke: "tenant", audit: "tenant" },
+      },
     };
   }
   const ctx = await liveContext();
+  let registration: { contractId?: number; contractName?: string; contractVersion?: string } = {};
+  try {
+    registration = JSON.parse(await readFile(".handoff-ledger.live.json", "utf8")) as typeof registration;
+  } catch {
+    // Registration metadata is optional until live bootstrap completes.
+  }
   return {
     mode,
+    runtime: `T3N ${process.env.T3N_ENV ?? "testnet"}`,
     tenantDid: maskDid(ctx.tenant.did),
     agentDid: maskDid(ctx.agent.did),
     allowedFields: SAFE_FIELDS,
     purpose: "fraud_review",
     piiStatus: "sealed in tenant-private case-data map; never sent to Fraud Agent",
     handoffId: activeHandoffId || null,
+    mechanics: {
+      contract: registration.contractName ?? ctx.contractName,
+      version: registration.contractVersion ?? ctx.contractVersion,
+      contractId: registration.contractId ?? "lookup after bootstrap",
+      wasm: "Rust/WASM TEE contract",
+      maps: ["case-data · private", "handoffs · private", "audit · private"],
+      authorization: {
+        grantor: maskDid(ctx.user.did),
+        recipient: maskDid(ctx.agent.did),
+        functions: ["redeem-handoff"],
+      },
+      calls: { create: "Support tenant DID", redeem: "Fraud agent DID", revoke: "Support tenant DID", audit: "Support tenant DID" },
+    },
   };
 }
 
