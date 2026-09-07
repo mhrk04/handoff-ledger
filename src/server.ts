@@ -85,7 +85,7 @@ async function state(): Promise<unknown> {
     piiStatus: "sealed in tenant-private case-data map; never sent to Fraud Agent",
     handoffId: activeHandoffId || null,
     mechanics: {
-      contract: `z:${maskDid(ctx.tenant.did)}:${contractTail()}`,
+      contract: `z:${maskDid(ctx.tenant.did).replace("did:t3n:", "")}:${contractTail()}`,
       version: registration.contractVersion ?? ctx.contractVersion,
       contractId: registration.contractId ?? "lookup after bootstrap",
       wasm: "Rust/WASM TEE contract",
