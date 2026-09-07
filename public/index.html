@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handoff Ledger</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <div><p class="eyebrow">TERMINAL 3 · AGENT AUTHORIZATION</p><h1>Handoff Ledger</h1><p class="lede">AI agents collaborate without silently sharing the whole customer record.</p></div>
+        <span id="mode" class="pill">loading…</span>
+      </header>
+      <section class="identity-grid">
+        <article><span>Support / tenant</span><strong id="tenantDid">—</strong></article>
+        <article><span>Fraud agent</span><strong id="agentDid">—</strong></article>
+        <article><span>Purpose</span><strong id="purpose">—</strong></article>
+        <article><span>PII boundary</span><strong id="piiStatus">—</strong></article>
+      </section>
+      <section class="card controls">
+        <div class="section-title"><div><p class="eyebrow">LIVE FLOW</p><h2>Make the permission boundary visible</h2></div><span id="handoffId" class="mono">no handoff</span></div>
+        <div class="buttons"><button id="create">1 · Create approved handoff</button><button id="redeem">2 · Redeem allowed fields</button><button id="attack" class="danger">3 · Attempt email + address</button><button id="revoke" class="quiet">4 · Revoke permission</button><button id="retry" class="quiet">Retry after revoke</button></div>
+        <pre id="result" aria-live="polite">Ready.</pre>
+      </section>
+      <section class="card">
+        <div class="section-title"><div><p class="eyebrow">AUDIT LEDGER</p><h2>Sanitized events</h2></div><span class="safe">No raw values</span></div>
+        <div id="audit" class="timeline"><p class="muted">Create a handoff to begin.</p></div>
+      </section>
+      <footer>Demo data is synthetic. Keys stay server-side. T3N identities are masked in this UI.</footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

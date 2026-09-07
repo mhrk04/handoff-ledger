@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#0b0d11"/>
+  <circle cx="1050" cy="40" r="270" fill="#173328" opacity=".7"/>
+  <g font-family="Arial, sans-serif" fill="#f3f5f7">
+    <text x="68" y="65" fill="#7df0b3" font-size="14" font-weight="700" letter-spacing="3">TERMINAL 3 · AGENT AUTHORIZATION</text>
+    <text x="68" y="135" font-size="66" font-weight="700">Handoff Ledger</text>
+    <text x="68" y="178" fill="#9ba4b1" font-size="22">AI agents collaborate without silently sharing the whole customer record.</text>
+    <rect x="1040" y="48" rx="18" width="100" height="38" fill="#10241a" stroke="#28553f"/>
+    <text x="1060" y="73" fill="#7df0b3" font-size="14" font-weight="700">LIVE</text>
+    <g fill="#13171d" stroke="#28303a">
+      <rect x="68" y="230" rx="16" width="258" height="100"/><rect x="340" y="230" rx="16" width="258" height="100"/><rect x="612" y="230" rx="16" width="220" height="100"/><rect x="846" y="230" rx="16" width="294" height="100"/>
+      <rect x="68" y="350" rx="18" width="1072" height="188"/><rect x="68" y="558" rx="18" width="1072" height="142"/>
+    </g>
+    <g fill="#9ba4b1" font-size="14"><text x="90" y="260">Support / tenant</text><text x="362" y="260">Fraud agent</text><text x="634" y="260">Purpose</text><text x="868" y="260">PII boundary</text></g>
+    <g font-size="17" font-weight="700"><text x="90" y="294">did:t3n:1111…111111</text><text x="362" y="294">did:t3n:2222…222222</text><text x="634" y="294">fraud_review</text><text x="868" y="294">sealed · never shared</text></g>
+    <text x="92" y="386" fill="#7df0b3" font-size="12" font-weight="700" letter-spacing="2">LIVE FLOW</text><text x="92" y="420" font-size="22" font-weight="700">Make the permission boundary visible</text>
+    <g font-size="15" font-weight="700"><rect x="92" y="450" rx="8" width="230" height="40" fill="#7df0b3"/><text x="109" y="476" fill="#07140d">1 · Create approved handoff</text><rect x="334" y="450" rx="8" width="195" height="40" fill="#7df0b3"/><text x="350" y="476" fill="#07140d">2 · Redeem allowed</text><rect x="541" y="450" rx="8" width="218" height="40" fill="#ff8c8c"/><text x="558" y="476" fill="#210707">3 · Attempt email + address</text></g>
+    <text x="92" y="600" fill="#7df0b3" font-size="12" font-weight="700" letter-spacing="2">AUDIT LEDGER</text><text x="92" y="634" font-size="20" font-weight="700">created · accepted · [order_id, risk_score, transaction_status]</text><text x="92" y="670" fill="#ff8c8c" font-size="18">denied · field_not_authorized · no raw PII</text>
+  </g>
+</svg>
