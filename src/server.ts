@@ -7,6 +7,7 @@ import { loadEnv } from "./env.js";
 import {
   createLiveContext,
   createLiveHandoff,
+  contractTail,
   getLiveAudit,
   maskDid,
   redeemLiveHandoff,
@@ -84,7 +85,7 @@ async function state(): Promise<unknown> {
     piiStatus: "sealed in tenant-private case-data map; never sent to Fraud Agent",
     handoffId: activeHandoffId || null,
     mechanics: {
-      contract: registration.contractName ?? ctx.contractName,
+      contract: `z:${maskDid(ctx.tenant.did)}:${contractTail()}`,
       version: registration.contractVersion ?? ctx.contractVersion,
       contractId: registration.contractId ?? "lookup after bootstrap",
       wasm: "Rust/WASM TEE contract",
