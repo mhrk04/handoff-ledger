@@ -1,0 +1,27 @@
+{
+  "name": "handoff-ledger",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scoped, revocable, auditable data handoffs between AI agents on Terminal 3.",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "verify": "tsx scripts/verify.ts",
+    "live:smoke": "tsx scripts/live-smoke.ts",
+    "live:bootstrap": "tsx scripts/bootstrap-live.ts",
+    "contract:build": "cargo build --manifest-path contract/Cargo.toml --target wasm32-wasip2 --release",
+    "contract:test": "cargo test --manifest-path contract/Cargo.toml",
+    "check": "npm run verify && npm run contract:test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@terminal3/t3n-sdk": "4.46.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
